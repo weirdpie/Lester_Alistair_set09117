@@ -24,44 +24,29 @@ public class Gameboard {
         	{0, 2, 0, 2, 0, 2, 0, 2, 0, 2}};
         	
         	
-   
         showingBoard(gameboard);
     }
 
-    public static void showingBoard(int[][] x ) {
+    public static void showingBoard(int[][] gameboard ) {
+    	
+    	String[] xHeader = {"A", "B", "C", "D","E", "F", "G","H"};
+    
+    	for(int i = 0; i<8;i++) {
+    		System.out.print((i + 1) + "\t");
+    		for(int j = 0; j <8;j++) {
+    			System.out.print(gameboard[i][j] + "\t");
+    		}
+    		System.out.println();
+    	}
+    	System.out.print("\n\t");
+    	for(int k = 0;k<8;k++) {
+    		System.out.print(xHeader[k] + "\t");
+    	}
+    	System.out.println("\t");
     	Scanner coordOr = new Scanner(System.in);
     	Scanner  NewCoord = new Scanner(System.in);
      
-    	
-    	
-    	
-    	
-        for(int row = 0; row < x.length; ++row) {
-        	  
-        System.out.print((row + 1) + "\t");
 
-      
-      
-            for(int column = 0; column < x[row].length; ++column) {
-     
-            
-            	
-                System.out.print(x[row][column]);
-            
-               
-            	
-            }
-            
-
-            System.out.println();
-          
-                      
-        }
-        
-       
-        
-        
-        
         System.out.println("what peice do you want to move  ");
         System.out.println(coordOr.nextLine());
         
@@ -69,8 +54,8 @@ public class Gameboard {
         System.out.println("where would you like to move it");
         System.out.println(NewCoord.nextLine());
         NewCoord.close();
-        coordOr.close(); 
-    
+       coordOr.close(); 
+
     }
     
   
