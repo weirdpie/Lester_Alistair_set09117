@@ -2,6 +2,11 @@
 
 package controller;
 import java.util.Scanner;
+import java.awt.event.InputEvent;
+import java.util.*;
+import Model.Move;
+import Model.piece;
+import Model.piece;
 
 public class Gameboard {
     public Gameboard() {
@@ -25,7 +30,11 @@ public class Gameboard {
         	
         	
         showingBoard(gameboard);
+     
     }
+    
+    
+    
 
     public static void showingBoard(int[][] gameboard ) {
     	
@@ -41,43 +50,44 @@ public class Gameboard {
     	System.out.print("\n\t");
     	for(int k = 0;k<8;k++) {
     		System.out.print(xHeader[k] + "\t");
+
     	}
+    	
     	System.out.println("\t");
-    	Scanner coordOr = new Scanner(System.in);
-    	Scanner  NewCoord = new Scanner(System.in);
-     
-
-        System.out.println("what peice do you want to move  ");
-        System.out.println(coordOr.nextLine());
-        
-        
-        System.out.println("where would you like to move it");
-        System.out.println(NewCoord.nextLine());
-        NewCoord.close();
-       coordOr.close(); 
 
     }
-    
-  
+    public void movePiece(int xmove, int ymove,int redPiece, int blackPiece, int Piece) {
+   	 Scanner sc=new Scanner(System.in);
 
-    public  void  printBoard() {
-    	 System.out.println("  â•”â•�â•�â•�â•¦â•�â•�â•�â•¦â•�â•�â•�â•¦â•�â•�â•�â•¦â•�â•�â•�â•¦â•�â•�â•�â•¦â•�â•�â•�â•¦â•�â•�â•�â•—");
-         System.out.println("  â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘");
-         System.out.println("  â• â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•£");
-         System.out.println("  â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘");
-         System.out.println("  â• â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•£");
-         System.out.println("  â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘");
-         System.out.println("  â• â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•£");
-         System.out.println("  â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘");
-         System.out.println("  â• â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•£");
-         System.out.println("  â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘");
-         System.out.println("  â• â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•£");
-         System.out.println("  â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘");
-         System.out.println("  â• â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•£");
-         System.out.println("  â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘");
-         System.out.println("  â• â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•¬â•�â•�â•�â•£");
-         System.out.println("  â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘â–‘â–‘â–‘â•‘â•‘");
-         System.out.println("  â•šâ•�â•�â•�â•©â•�â•�â•�â•©â•�â•�â•�â•©â•�â•�â•�â•©â•�â•�â•�â•©â•�â•�â•�â•©â•�â•�â•�â•©â•�â•�â•�â•�");
-    }
+       System.out.println("what peice do you want to move  ");
+      int xorigin = sc.nextInt();
+      int yorigin = sc.nextInt();
+       
+       System.out.print(xorigin);
+       System.out.print(yorigin);
+//       int xorigin = piece.getX();
+//      int yorigin = piece.getY(); 
+//       
+//       
+//       System.out.println("where would you like to move it");
+//     
+//		  // Save current position, so we can erase the piece.
+//       
+//		  // Update the location.
+//		  piece.setX(xorigin + xmove);
+//		
+//      piece.setY(yorigin + ymove);
+//
+//		  // Remove piece from old position
+//		  gameboard[xorigin][yorigin].clear();
+//
+//		  // Add it to the new position.
+//		  addPiece(piece);
+//		   NewCoord.close();
+//	       coordOr.close();
+       sc.close();
+   	
+		}
+
     
 }
