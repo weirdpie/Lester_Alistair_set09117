@@ -5,20 +5,22 @@ import java.util.Scanner;
 
 import model.Model;
 import model.Move;
-import model.piece;
+import model.Piece;
 
 import java.util.*;
 
 
 public class Gameboard {
 	
-	
+ Model model = new Model();
+ Move move = new Move(0, 0, 0, 0);
+ static Piece piece = new Piece(0, 0, 0, 0, 0);
 
     
     
     
 
-    public static  void showingBoard( ) {
+    public static void showingBoard( ) {
     	
     	 int[][] gameboard = new int[][]{
  	       	{1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
@@ -67,35 +69,37 @@ public class Gameboard {
       
       System.out.print(xorigin );
       System.out.print(yorigin);
-//      int xorigin = piece.getX();
-//     int yorigin = piece.getY(); 
+//      int xorigin = Piece.getX();
+//     int yorigin = Piece.getY(); 
       
       
      System.out.println("where would you like to move it");
-//    
-//		  // Save current position, so we can erase the piece.
+      int xmove = sc.nextInt();
+      int ymove = sc.nextInt();
+//		  // Save current position, so we can erase the Piece.
 //      
 //		  // Update the location.
-//		  piece.setX(xorigin + xmove);
+	  piece.setX(xorigin + xmove);
 //		
-//     piece.setY(yorigin + ymove);
+       piece.setY(yorigin + ymove);
 //
-//		  // Remove piece from old position
-	controller.showingBoard(gameboard)[xorigin][yorigin].clear();
+//		  // Remove Piece from old position
+	//showingBoard(gameboard)[xorigin][yorigin].clear();
 //
 //		  // Add it to the new position.
-//		  addPiece(piece);
+		  //addPiece(piece);
 //		   NewCoord.close();
 //	       coordOr.close();
+		 showingBoard();
       sc.close();
   	
 		}
 
 	 public static void main(String[] args) {
-   	 
+   //	 Gameboard controller = new Gameboard();
 //		 model Model = new Model();
 //		 model Move = new Move();
-//		 model piece = new piece();
+//		 model Piece = new Piece();
 
    	
    

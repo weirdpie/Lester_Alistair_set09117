@@ -38,5 +38,9 @@ public int getYmove() {
 public void setYmove(int ymove) {
 	this.ymove = ymove;
 }
+@Override
+public String toString() {
+	return "Move [xorigin=" + xorigin + ", yorigin=" + yorigin + ", xmove=" + xmove + ", ymove=" + ymove + "]";
+}
 
 }

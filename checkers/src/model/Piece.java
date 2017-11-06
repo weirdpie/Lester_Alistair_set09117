@@ -1,21 +1,42 @@
 package model;
 
-public class piece {
+public class Piece {
 
 	int redPiece;
 	int blackPiece;
 	int Piece;
+	int x;
+	int y;
+	
 
-	public piece(int redPiece, int blackPiece, int Piece) {
+	public Piece(int redPiece, int blackPiece, int Piece,int x,int y) {
 	super();
 	this.redPiece = redPiece;
 	this.blackPiece = blackPiece;
 	this.Piece = Piece;
+	this.x =x;
+	this.y = y;
 
 	}
 
 	public int getRedPiece() {
 		return redPiece;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 
 	public void setRedPiece(int redPiece) {
@@ -40,8 +61,10 @@ public class piece {
 
 	@Override
 	public String toString() {
-		return "piece [redPiece=" + redPiece + ", blackPiece=" + blackPiece + ", Piece=" + Piece + "]";
+		return "Piece [redPiece=" + redPiece + ", blackPiece=" + blackPiece + ", Piece=" + Piece + ", x=" + x + ", y="
+				+ y + "]";
 	}
 
+	
 
 }
