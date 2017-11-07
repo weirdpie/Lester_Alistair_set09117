@@ -20,7 +20,7 @@ public class Game {
     
     
 
-    public static void showingBoard( ) {
+    public static  void showingBoard() {
     	
     	 int[][] gameboard = new int[][]{
  	       	{1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
@@ -59,8 +59,9 @@ public class Game {
     
 
     public static  void  move() {
-    
+  
   	 Scanner sc=new Scanner(System.in);
+  	
   	 
   
       System.out.println("what peice do you want to move  ");
@@ -79,16 +80,26 @@ public class Game {
 //		  // Save current position, so we can erase the Piece.
 //      
 //		  // Update the location.
-	  piece.setX(xorigin + xmove);
-//		
-       piece.setY(yorigin + ymove);
+      
+      // gameboard [xorigin][yorigin] = =0 s 
+      //gameboard [xmove][ymove] = drop holding 
+//	  piece.setX(xorigin + xmove);
+////		
+//       piece.setY(yorigin + ymove);
 //
 //		  // Remove Piece from old position
 	//showingBoard(gameboard)[xorigin][yorigin].clear();
 //
 //		  // Add it to the new position.
 		  //addPiece(piece);
-
+//for ( gameboard[xorigin][yorigin]) = 0; {
+//	
+//	 gameboard[xmove][ymove] = piece;
+//}
+//		
+		
+		
+		
 		 showingBoard();
       sc.close();
   	
@@ -100,11 +111,11 @@ public class Game {
 //		 model Move = new Move();
 //		 model Piece = new Piece();
 
-  
+   	
    
       showingBoard();
-      move();
-    	//but there all static this make 0 sense 
+      move(0);
+      
     
    }
 } 
