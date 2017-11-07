@@ -20,7 +20,7 @@ public class Game {
     
     
 
-    public static  void showingBoard() {
+    public void showingBoard() {
     	
     	 int[][] gameboard = new int[][]{
  	       	{1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
@@ -58,11 +58,11 @@ public class Game {
 
     
 
-    public static  void  move() {
+    public void  move() {
   
   	 Scanner sc=new Scanner(System.in);
   	
-  	 
+  	 Game gameboard = new Game();
   
       System.out.println("what peice do you want to move  ");
      int xorigin = sc.nextInt();
@@ -91,12 +91,12 @@ public class Game {
 	//showingBoard(gameboard)[xorigin][yorigin].clear();
 //
 //		  // Add it to the new position.
-		  //addPiece(piece);
-//for ( gameboard[xorigin][yorigin]) = 0; {
-//	
+//		  //addPiece(piece);
+//for (int gameboard[xorigin][yorigin]) = 0; {
+////	
 //	 gameboard[xmove][ymove] = piece;
-//}
-//		
+////}
+////		
 		
 		
 		
@@ -110,11 +110,12 @@ public class Game {
 //		 model Model = new Model();
 //		 model Move = new Move();
 //		 model Piece = new Piece();
+Game controller = new Game();
 
    	
    
-      showingBoard();
-      move(0);
+      controller.showingBoard();
+      controller.move();
       
     
    }
