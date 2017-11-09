@@ -2,15 +2,16 @@ package model;
 
 import java.util.Arrays;
 
-public class Gameboard {
+public class GameBoard {
 
 	int[][] gameboard = new int[][] { { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 }, { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
 			{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 2, 0, 2, 0, 2, 0, 2, 0, 2 }, { 2, 0, 2, 0, 2, 0, 2, 0, 2, 0 }, { 0, 2, 0, 2, 0, 2, 0, 2, 0, 2 } };
 	
 	
+	
 
-	public Gameboard(int[][] gameboard) {
+	public GameBoard() {
 		super();
 		this.gameboard = gameboard;
 	}
@@ -25,7 +26,7 @@ public class Gameboard {
 
 	@Override
 	public String toString() {
-		return "Gameboard [gameboard=" + Arrays.toString(gameboard) + "]";
+		return "GameBoard [gameboard=" + Arrays.toString(gameboard) + "]";
 	}
 
 }

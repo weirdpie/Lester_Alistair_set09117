@@ -6,7 +6,7 @@ import java.util.Scanner;
 import model.Model;
 import model.Move;
 import model.Piece;
-import model.Gameboard;
+import model.GameBoard;
 
 import java.util.*;
 
@@ -15,7 +15,7 @@ public class Game {
 	Model model = new Model();
 	Move move = new Move(0, 0, 0, 0);
 	static Piece piece = new Piece(0, 0, 0, 0, 0);
-	Gameboard gameboard = new Gameboard();
+	GameBoard gameboard = new GameBoard();
 
 	public void showingBoard() {
 
@@ -24,7 +24,7 @@ public class Game {
 	for (int i = 0; i < 8; i++) {
 			System.out.print((i + 1) + "\t");
 			for (int j = 0; j < 8; j++) {
-			System.out.print(gameboard.getGameboard[i][j] + "\t");
+			System.out.print(gameboard.getGameboard()[i][j] + "\t");
 			}
 			System.out.println();
 		}
