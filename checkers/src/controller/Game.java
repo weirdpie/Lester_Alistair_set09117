@@ -37,41 +37,13 @@ public class Game {
 		System.out.println("\t");
 
 	}
-//  	 int[][] gameboard = new int[][]{
-//	       	{1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-//	       	{0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
-//	       	{1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-//	       	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-//	       	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-//	       	{0, 2, 0, 2, 0, 2, 0, 2, 0, 2},
-//	       	{2, 0, 2, 0, 2, 0, 2, 0, 2, 0},
-//	       	{0, 2, 0, 2, 0, 2, 0, 2, 0, 2}};
-// 	
-// 	String[] xHeader = {"A", "B", "C", "D","E", "F", "G","H"};
-// 	 
-// 
-// 	for(int i = 0; i<8;i++) {
-// 		System.out.print((i + 1) + "\t");
-// 		for(int j = 0; j <8;j++) {
-// 			System.out.print(gameboard[i][j] + "\t");
-// 		}
-// 		System.out.println();
-// 	}
-// 	System.out.print("\n\t");
-// 	for(int k = 0;k<8;k++) {
-// 		System.out.print(xHeader[k] + "\t");
-//
-// 	}
-//
-//
-// 	
-// 	System.out.println("\t");
 
-	public void move() {
+
+	public void moveChecker() {
 
 		Scanner sc = new Scanner(System.in);
 
-		Game gameboard = new Game();
+		//Game gameboard = new Game();
 
 		System.out.println("what peice do you want to move  ");
 		int xorigin = sc.nextInt();
@@ -85,11 +57,22 @@ public class Game {
 		System.out.println("where would you like to move it");
 		int xmove = sc.nextInt();
 		int ymove = sc.nextInt();
+		
+//		 for (int r=0; r<gameboard.length; r++) {
+//		     for (int c=0; c<gameboard[r].length; c++) {
+//		         gameboard.getGameboard()[r][c] = gameboard.setGameboard(gameboard)[xmove][ymove];//your value
+//		     }
+//		 }
+		
+//		gameboard.setGameboard[xmove][ymove];
 		// // Save current position, so we can erase the Piece.
 		//
 		// // Update the location.
-
-		// gameboard [xorigin][yorigin] = 0;
+//gameboard.getGameboard()[xorigin][yorigin] = gameboard.setGameboard([xmove][ymove]); 
+//	for (gameboard.getGameboard()[xorigin][yorigin]) {
+//		
+//	gameboard.setGameboard()[xmove][ymove];
+//	}
 		// gameboard [xmove][ymove] = drop holding
 		// piece.setX(xorigin + xmove);
 		////
@@ -119,7 +102,7 @@ public class Game {
 		Game controller = new Game();
 
 		controller.showingBoard();
-		controller.move();
+		controller.moveChecker();
 
 	}
 }
