@@ -59,6 +59,7 @@ public class Game {
 		int xmove = sc.nextInt();
 		int ymove = sc.nextInt();
 		
+		//gameboard.getGameboard()[move.getXorigin()][move.getYorigin()]= gameboard.getGameboard()[xorigin][yorigin];
 		gameboard.getGameboard()[move.getXorigin()][move.getYorigin()]= 0;
 	gameboard.getGameboard()[move.getYmove()][move.getXmove()] = gameboard.getGameboard()[xmove][ymove];
 		
