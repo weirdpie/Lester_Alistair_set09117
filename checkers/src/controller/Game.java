@@ -18,7 +18,7 @@ public class Game {
 	GameBoard gameboard = new GameBoard();
 
 	public void showingBoard() {
-
+		
 	String[] xHeader = { "A", "B", "C", "D", "E", "F", "G", "H" };
 
 	for (int i = 0; i < 8; i++) {
@@ -53,17 +53,26 @@ public class Game {
 		System.out.print(yorigin);
 		// int xorigin = Piece.getX();
 		// int yorigin = Piece.getY();
+//		System.out.println(gameboard.getGameboard()[0][0]);
 
 		System.out.println("where would you like to move it");
 		int xmove = sc.nextInt();
 		int ymove = sc.nextInt();
 		
+		gameboard.getGameboard()[move.getXorigin()][move.getYorigin()]= 0;
+	gameboard.getGameboard()[move.getYmove()][move.getXmove()] = gameboard.getGameboard()[xmove][ymove];
+		
+
+//		System.out.println(gameboard.getGameboard()[0][0]);
+		
+		//gameboard.add(xorigin,yorigin,xmove,ymove);
+		//gameboard.setGameboard[xmove][ymove];  
 //		 for (int r=0; r<gameboard.length; r++) {
 //		     for (int c=0; c<gameboard[r].length; c++) {
 //		         gameboard.getGameboard()[r][c] = gameboard.setGameboard(gameboard)[xmove][ymove];//your value
 //		     }
 //		 }
-		
+	
 //		gameboard.setGameboard[xmove][ymove];
 		// // Save current position, so we can erase the Piece.
 		//
@@ -93,6 +102,19 @@ public class Game {
 		sc.close();
 
 	}
+	
+	public void legalmove() {
+		
+	}
+	
+	public void jumpCheck() {
+		
+	}
+	
+	public void king() {
+		
+	}
+	
 
 	public static void main(String[] args) {
 		// Game controller = new Game();
