@@ -1,70 +1,61 @@
 package model;
 
 public class Piece {
-
-	int redPiece;
-	int blackPiece;
-	int Piece;
-	int x;
-	int y;
+//TYPE 
+	//X AND Y 
+	
+	int type;
+	int xPosition;
+	int yPosition;
 	
 
-	public Piece(int redPiece, int blackPiece, int Piece,int x,int y) {
+	public Piece(int type,int xPosition,int yPosition) {
 	super();
-	this.redPiece = redPiece;
-	this.blackPiece = blackPiece;
-	this.Piece = Piece;
-	this.x =x;
-	this.y = y;
+	this.type= type; 
+	this.xPosition =xPosition;
+	this.yPosition = yPosition;
 
 	}
 
-	public int getRedPiece() {
-		return redPiece;
+
+	public int getType() {
+		return type;
 	}
 
-	public int getX() {
-		return x;
+
+	public void setType(int type) {
+		this.type = type;
 	}
 
-	public void setX(int x) {
-		this.x = x;
+
+	public int getxPosition() {
+		return xPosition;
 	}
 
-	public int getY() {
-		return y;
+
+	public void setxPosition(int xPosition) {
+		this.xPosition = xPosition;
 	}
 
-	public void setY(int y) {
-		this.y = y;
+
+	public int getyPosition() {
+		return yPosition;
 	}
 
-	public void setRedPiece(int redPiece) {
-		this.redPiece = redPiece;
+
+	public void setyPosition(int yPosition) {
+		this.yPosition = yPosition;
 	}
 
-	public int getBlackPiece() {
-		return blackPiece;
-	}
-
-	public void setBlackPiece(int blackPiece) {
-		this.blackPiece = blackPiece;
-	}
-
-	public int getPiece() {
-		return Piece;
-	}
-
-	public void setPiece(int piece) {
-		Piece = piece;
-	}
 
 	@Override
 	public String toString() {
-		return "Piece [redPiece=" + redPiece + ", blackPiece=" + blackPiece + ", Piece=" + Piece + ", x=" + x + ", y="
-				+ y + "]";
+		return "Piece [type=" + type + ", xPosition=" + xPosition + ", yPosition=" + yPosition + "]";
 	}
 
+
+
+	
 	
 
 }

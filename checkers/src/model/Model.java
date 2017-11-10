@@ -1,7 +1,48 @@
 package model;
 import java.util.ArrayList;
 public class Model {
-	ArrayList<Move> Move = new ArrayList<Move>();
-	ArrayList<Move> Movetemp = new ArrayList<Move>();
+ArrayList<Move> moves = new ArrayList<Move>();
+ArrayList<Move> temp = new ArrayList<Move>();
+ArrayList<Piece> blackPieces = new ArrayList<Piece>();
+ArrayList<Piece> whitePieces = new ArrayList<Piece>();
+int i = 1;
+	public void populate() {
+		
+		blackPieces.add(new Piece(1,1,0));
+		blackPieces.add(new Piece(1,3,0));
+		blackPieces.add(new Piece(1,5,0));
+		blackPieces.add(new Piece(1,7,0));
+		blackPieces.add(new Piece(1,0,1));
+		blackPieces.add(new Piece(1,2,1));
+		blackPieces.add(new Piece(1,4,1));
+		blackPieces.add(new Piece(1,6,1));
+		blackPieces.add(new Piece(1,1,2));
+		blackPieces.add(new Piece(1,3,2));
+		blackPieces.add(new Piece(1,5,2));
+		blackPieces.add(new Piece(1,7,2));
+		
+		whitePieces.add(new Piece(2,0,5));
+		whitePieces.add(new Piece(2,2,5));
+		whitePieces.add(new Piece(2,4,5));
+		whitePieces.add(new Piece(2,6,5));
+		whitePieces.add(new Piece(2,1,6));
+		whitePieces.add(new Piece(2,3,6));
+		whitePieces.add(new Piece(2,5,6));
+		whitePieces.add(new Piece(2,7,6));
+		whitePieces.add(new Piece(2,0,7));
+		whitePieces.add(new Piece(2,2,7));
+		whitePieces.add(new Piece(2,4,7));
+		whitePieces.add(new Piece(2,6,7));
+
+	}
+	
+	
+	public void addMove(Move move) {
+		
+		moves.add(i,move);
+		i++;
+	}
+	
+	
 
 }
