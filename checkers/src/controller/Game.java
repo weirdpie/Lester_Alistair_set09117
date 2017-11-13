@@ -53,14 +53,16 @@ public class Game {
 
 
 	public void moveChecker() {
-
+		String origin;
+		
 		Scanner sc = new Scanner(System.in);
 
 
 		System.out.println("what peice do you want to move  ");
 		int xorigin = sc.nextInt();
 		int yorigin = sc.nextInt();
-
+		
+		
 		System.out.print(xorigin);
 		System.out.print(yorigin);
 
@@ -78,14 +80,64 @@ public class Game {
 		gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()]= 0;
 		gameBoard.getGameboard()[move.getYmove()][move.getXmove()] = type;
 		
+//		String origin = origin.substring(0,1);
 
-
-
+		vaildate_y(yorigin);
 		showingBoard();
 		sc.close();
 
 	}
 	
+//	public static Boolean checkInput (int xorigin,int yorigin,int xmove , int ymove ) {
+//		
+//		
+//		
+//		
+//		
+//		
+//		return null;
+//		
+//		
+//	}
+//	
+	public int vaildate_y(int yorigin) {
+		
+		int ycord = 0;
+		
+		switch (yorigin) {
+			case 'A' :
+				ycord = 0;
+				break;
+			case 'B' :
+				ycord = 1;
+				break;
+			case 'C' :
+				ycord = 2;
+				break;
+			case 'D' :
+				ycord = 3;
+				break;
+			case 'E' :
+				ycord = 4;
+				break;
+			case 'F' :
+				ycord = 5;
+				break;
+			case 'G' :
+				ycord = 6;
+				break;
+			case 'H' :
+				ycord = 7;
+				break;
+				
+				
+				
+				
+			
+		}
+		return ycord;
+		
+	}
 	
 	
 	
