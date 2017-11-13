@@ -66,26 +66,26 @@ public class Game {
 		
 	
 		
-		String yorigin = origin.substring(0,1);
-		int xorigin = Integer.parseInt(origin.substring(1,2));
-		int convertedYorigin = vaildate_y(yorigin);
-		xorigin -= 1;
+		String xorigin = origin.substring(0,1);
+		int yorigin = Integer.parseInt(origin.substring(1,2));
+		int convertedXorigin = vaildate_x(xorigin);
+		yorigin -= 1;
 		
 		System.out.println("where would you like to move it");
 	moveCord = sc.next();
 	
-	String ymove = moveCord.substring(0,1);
-	int xmove = Integer.parseInt(moveCord.substring(1,2));
-	int convertedYmove = vaildate_y(ymove);
-	xmove -=1;
+	String xmove = moveCord.substring(0,1);
+	int ymove = Integer.parseInt(moveCord.substring(1,2));
+	int convertedXmove = vaildate_x(xmove);
+	ymove -=1;
 	
-	System.out.printf(yorigin,convertedYorigin,ymove,convertedYmove,xorigin,xmove);
+	//System.out.print(yorigin,convertedXorigin,ymove,convertedXmove,xorigin,xmove);
 	
 	
 	
-Move move = new Move(xorigin, convertedYorigin , xmove, convertedYmove);
+Move move = new Move(yorigin, convertedXorigin , ymove, convertedXmove);
 //			
-	int type = gameBoard.getGameboard()[yorigin][xorigin];
+	int type = gameBoard.getGameboard()[convertedXorigin][yorigin];
 //		
 //		//model.addMove(move);
 //
@@ -94,7 +94,7 @@ Move move = new Move(xorigin, convertedYorigin , xmove, convertedYmove);
 	
 
 
-		vaildate_y(yorigin);
+		vaildate_x(xorigin);
 		showingBoard();
 		sc.close();
 
@@ -146,45 +146,45 @@ Move move = new Move(xorigin, convertedYorigin , xmove, convertedYmove);
 		
 		
 	}	
-	public int vaildate_y(String yorigin) {
+	public int vaildate_x(String xorigin) {
 		
-   	yorigin = yorigin.toUpperCase();
-		int ycord;
+   	xorigin = xorigin.toUpperCase();
+		int xcord;
 		
-		switch (yorigin) {
+		switch (xorigin) {
 			case "A" :
-				ycord = 0;
+				xcord = 0;
 				break;
 			case "B" :
-				ycord = 1;
+				xcord = 1;
 				break;
 			case "C" :
-				ycord = 2;
+				xcord = 2;
 				break;
 			case "D" :
-				ycord = 3;
+				xcord = 3;
 				break;
 			case "E" :
-				ycord = 4;
+				xcord = 4;
 				break;
 			case "F" :
-				ycord = 5;
+				xcord = 5;
 				break;
 			case "G" :
-				ycord = 6;
+				xcord = 6;
 				break;
 			case "H" :
-				ycord = 7;
+				xcord = 7;
 				break;
 				
 				
 			default:
-				ycord = 8;
+				xcord = 8;
 				break;
 				
 			
 		}
-		return ycord;
+		return xcord;
 		
 	}
 	
