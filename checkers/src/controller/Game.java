@@ -83,16 +83,16 @@ public class Game {
 	
 	
 	
-//	Move move = new Move(xorigin, yorigin, xmove, ymove);
+Move move = new Move(xorigin, convertedYorigin , xmove, convertedYmove);
 //			
-//		int type = gameBoard.getGameboard()[yorigin][xorigin];
+	int type = gameBoard.getGameboard()[yorigin][xorigin];
 //		
 //		//model.addMove(move);
 //
-//		gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()]= 0;
-//		gameBoard.getGameboard()[move.getYmove()][move.getXmove()] = type;
-//		
-////		String origin = origin.substring(0,1);
+	gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()]= 0;
+		gameBoard.getGameboard()[move.getYmove()][move.getXmove()] = type;
+	
+
 
 		vaildate_y(yorigin);
 		showingBoard();
