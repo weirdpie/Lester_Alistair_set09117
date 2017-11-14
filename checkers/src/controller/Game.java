@@ -79,7 +79,7 @@ public class Game {
 		//
 		int type = gameBoard.getGameboard()[convertedXorigin][yorigin];
 		//
-		// //model.addMove(move);
+		model.addMove(move);
 		//
 		gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()] = 0;
 		gameBoard.getGameboard()[move.getYmove()][move.getXmove()] = type;
@@ -117,6 +117,9 @@ public class Game {
 	}
 	public void undo () {
 		//move list -1 ? 
+	}
+	public void redo () {
+		//throw list +1 
 	}
 
 	public int vaildate_x(String xorigin) {
