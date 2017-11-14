@@ -37,10 +37,12 @@ int i = 1;
 	}
 	
 	
-	public void addMove(Move move) {
+	public Move addMove(int xorigin,int yorigin,int xmove, int ymove) {
+		Move move = new Move(xorigin,yorigin,xmove,ymove);
+		moves.add(move);
 		
-		moves.add(i,move);
-		i++;
+		System.out.println("move added");
+		return move;
 	}
 	
 	

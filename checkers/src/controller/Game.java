@@ -3,6 +3,7 @@ package controller;
 
 import java.util.Scanner;
 
+
 import model.Model;
 import model.Move;
 import model.Piece;
@@ -11,13 +12,16 @@ import model.GameBoard;
 import java.util.*;
 
 public class Game {
+	//move user input to seperate function to input into move validation 
 	// do input vaildation
+	//turns
+	//undo re do 
 	// do move validation
 	// add move to list
 	// do jump
 	// jump validation = move vaildation
 	// kings
-	// redo
+	
 
 	Model model = new Model();
 
@@ -50,9 +54,9 @@ public class Game {
 	}
 
 	public void moveChecker() {
-		String origin;
-		String moveCord;
-
+		String origin ="";
+		String moveCord= "";
+		
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("what peice do you want to move  ");
@@ -79,20 +83,27 @@ public class Game {
 		//
 		int type = gameBoard.getGameboard()[convertedXorigin][yorigin];
 		//
-		model.addMove(move);
+		model.addMove(convertedXorigin, yorigin, convertedXmove, ymove);
+		System.out.print(move+"\n");
 		//
 		gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()] = 0;
 		gameBoard.getGameboard()[move.getYmove()][move.getXmove()] = type;
 
 		vaildate_x(xorigin);
 		showingBoard();
-		sc.close();
-
+		
+		
+		
+		
+		 
+//if 1 trys to move into 2 get new user input 
+		//call move moveChecker to make sure user is inputing the right data 
+		//if type any peice = 0 end game and declare the other user the winner.
 	}
 
 
 	public static Boolean checkInput(String sc) {
-
+		//call move moveChecker to make sure user is inputing the right data 
 		return null;
 
 	}
@@ -156,18 +167,22 @@ public class Game {
 		default:
 			xcord = 8;
 			break;
+			
+			
 
 		}
 		return xcord;
-
+		
 	}
 
 	public static void main(String[] args) {
-
+		//Scanner sc = new Scanner(System.in);
 		Game controller = new Game();
 		controller.populate();
 		controller.showingBoard();
+		boolean play=true;
+		do {
 		controller.moveChecker();
-
+		}while (play==true);
 	}
 }
