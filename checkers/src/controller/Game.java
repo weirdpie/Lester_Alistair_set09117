@@ -67,12 +67,12 @@ public class Game {
 
 	}
 
-	public void moveChecker() {
+	public void moveChecker(int turn,boolean play) {
 		String origin ="";
 		String moveCord= "";
 		
 		Scanner sc = new Scanner(System.in);
-
+       while (play==true) {
 		System.out.println("what peice do you want to move  ");
 		origin = sc.next();
 
@@ -99,14 +99,16 @@ public class Game {
 		//
 		model.addMove(convertedXorigin, yorigin, convertedXmove, ymove);
 		System.out.print(move+"\n");
+		
 		//model.moves.add(convertedXorigin, yorigin, convertedXmove, ymove);
 		gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()] = 0;
 		gameBoard.getGameboard()[move.getYmove()][move.getXmove()] = type;
-
+		
 		vaildate_x(xorigin);
 		showingBoard();
-		
-		
+		turn = changeTurn(turn);
+	
+       }
 		
 		
 		 
@@ -210,7 +212,7 @@ public class Game {
 		int turn =1 ;
 		boolean play=true;
 		do {
-		controller.moveChecker();
+		controller.moveChecker(turn,play);
 		}while (play==true);
 		
 	while (play==false);{
