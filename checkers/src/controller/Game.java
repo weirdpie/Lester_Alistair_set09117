@@ -89,46 +89,34 @@ public class Game {
 		sc.close();
 
 	}
-	// public void moveChecker() {
-	// String origin;
-	//
-	// Scanner sc = new Scanner(System.in);
-	//
-	//
-	// System.out.println("what peice do you want to move ");
-	// int xorigin = sc.nextInt();
-	// int yorigin = sc.nextInt();
-	//
-	//
-	// System.out.print(xorigin);
-	// System.out.print(yorigin);
-	//
-	//
-	// System.out.println("where would you like to move it");
-	// int xmove = sc.nextInt();
-	// int ymove = sc.nextInt();
-	//
-	// Move move = new Move(xorigin, yorigin, xmove, ymove);
-	//
-	// int type = gameBoard.getGameboard()[yorigin][xorigin];
-	//
-	// //model.addMove(move);
-	//
-	// gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()]= 0;
-	// gameBoard.getGameboard()[move.getYmove()][move.getXmove()] = type;
-	//
-	//// String origin = origin.substring(0,1);
-	//
-	// vaildate_y(yorigin);
-	// showingBoard();
-	// sc.close();
-	//
-	// }
+
 
 	public static Boolean checkInput(String sc) {
 
 		return null;
 
+	}
+	
+	public void checkMove() {
+//		If red piece  can only move +1  +1 , +1 -1 , -1 +1 , -1 -1 i
+//		If black piece can only move -1 -1 , -1 +1 , +1 -1 , +1 +1
+//		else invalid move 
+		// restart players turn and ask them to move again 
+	}
+	public void checkTake () {
+//		If red take , black piece +1 +1 empty , black piece +1 -1 empty then take and delete 
+//		If black take , red piece -1 -1 empty , red piece -1 +1 empty then take and delete  
+//		else invalid move 
+		// restart players turn and ask them to move again 
+	}
+	public void king() {
+		//if piece reached 0 or 8 , change peice type to king ( colour ) and end turn 
+	}
+	public void checkKing() {
+		//king type can move any way 
+	}
+	public void undo () {
+		//move list -1 ? 
 	}
 
 	public int vaildate_x(String xorigin) {
