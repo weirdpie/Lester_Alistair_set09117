@@ -1,7 +1,7 @@
 package model;
 import java.util.ArrayList;
 public class Model {
-ArrayList<Move> moves = new ArrayList<Move>();
+public ArrayList<Move> moves = new ArrayList<Move>();
 ArrayList<Move> temp = new ArrayList<Move>();
 ArrayList<Piece> blackPieces = new ArrayList<Piece>();
 ArrayList<Piece> whitePieces = new ArrayList<Piece>();

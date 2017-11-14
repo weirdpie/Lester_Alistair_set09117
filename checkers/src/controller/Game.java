@@ -12,8 +12,7 @@ import model.GameBoard;
 import java.util.*;
 
 public class Game {
-	//move user input to seperate function to input into move validation 
-	// do input vaildation
+
 	//turns
 	//undo re do 
 	// do move validation
@@ -32,7 +31,22 @@ public class Game {
 	}
 
 	public void showingBoard() {
-
+		
+//		while(!gameEnd) {
+//		
+//			if (counter%2 =0 )
+//			{
+//				player1();
+//				player2();
+//			}
+//			if (counter %2 =1) {
+//				player2();
+//				player1();
+//			}
+//			counter ++; 
+//				
+//		}
+		
 		String[] xHeader = { "A", "B", "C", "D", "E", "F", "G", "H" };
 
 		for (int i = 0; i < 8; i++) {
@@ -85,7 +99,7 @@ public class Game {
 		//
 		model.addMove(convertedXorigin, yorigin, convertedXmove, ymove);
 		System.out.print(move+"\n");
-		//
+		//model.moves.add(convertedXorigin, yorigin, convertedXmove, ymove);
 		gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()] = 0;
 		gameBoard.getGameboard()[move.getYmove()][move.getXmove()] = type;
 
@@ -174,15 +188,33 @@ public class Game {
 		return xcord;
 		
 	}
+	public int changeTurn (int turn) {
+		if (turn ==1) {
+			turn=2;
+			System.out.println("Its player 2s turn (white 2's"); 
+		}
+		else if (turn==2) {
+			turn=1;
+			System.out.println("Its player 1s turn (blacks 1's"); 
+		}
+		
+		return turn;
+		
+	}
 
 	public static void main(String[] args) {
 		//Scanner sc = new Scanner(System.in);
 		Game controller = new Game();
 		controller.populate();
 		controller.showingBoard();
+		int turn =1 ;
 		boolean play=true;
 		do {
 		controller.moveChecker();
 		}while (play==true);
+		
+	while (play==false);{
+		System.out.println("the game has ended");
+	}
 	}
 }
