@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class Model {
 public ArrayList<Move> moves = new ArrayList<Move>();
 ArrayList<Move> temp = new ArrayList<Move>();
-ArrayList<Piece> blackPieces = new ArrayList<Piece>();
-ArrayList<Piece> whitePieces = new ArrayList<Piece>();
+public ArrayList<Piece> blackPieces = new ArrayList<Piece>();
+public ArrayList<Piece> whitePieces = new ArrayList<Piece>();
 int i = 1;
 	public void populate() {
 		

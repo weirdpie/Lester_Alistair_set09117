@@ -23,6 +23,8 @@ public class Game {
 
 	GameBoard gameBoard = new GameBoard();
 
+	int blackPieces =12;
+	int whitePieces =12;
 	public void populate() {
 		model.populate();
 	}
@@ -89,32 +91,85 @@ public class Game {
 		Piece piece = model.findPiece(xcord,yvalue);
 		return piece;
 	}
-//	public boolean oppenentsChecker(int xcord,int yvalue,int turn, Piece type) {
-//		//int attChecker = Piece.getType();
-//		int piece =gameBoard.getGameboard()[yvalue][xcord];
-//		
-//		if ((attChecker ==1) || (attChecker ==3)) {
-//			if((piece ==2) || (piece ==4)) {
-//				System.out.println("checker is an enemy");
-//				return true;
-//			}else {
-//				System.out.println("checker is not an enemy");
-//			}
-//		
-//		}else {
-//			if((piece ==1) || (piece==3)) {
-//				System.out.println("checker is an enemy");
-//				return true;
-//			}else {
-//				System.out.println("checker is not an enemy");
-//			
-//			}
-//		}
-//		
-//		
-//		return false;
-//	}
-//	
+	public boolean oppenentsChecker(int xcord,int yvalue,int turn, Piece type) {
+		int attChecker = Piece.getType();
+		int piece =gameBoard.getGameboard()[yvalue][xcord];
+		
+		if ((attChecker ==1) || (attChecker ==3)) {
+			if((piece ==2) || (piece ==4)) {
+				System.out.println("checker is an enemy");
+				return true;
+			}else {
+				System.out.println("checker is not an enemy");
+			}
+		
+		}else {
+			if((piece ==1) || (piece==3)) {
+				System.out.println("checker is an enemy");
+				return true;
+			}else {
+				System.out.println("checker is not an enemy");
+			
+			}
+		}
+	
+	
+		return false;
+}
+	public boolean jumpCheck (int xorgin,int yorigin, int xmove, int ymove, boolean movingRight, boolean movingDown) {
+		if (movingDown) {
+			if (movingRight) {
+				if (gameBoard.getGameboard()[ymove+1][xmove+1] == 0) {
+					System.out.println("moving down and right and space is clear");
+					return true;
+				}else {
+					if (gameBoard.getGameboard()[ymove+1][xmove-1] == 0) {
+						System.out.println("moving down and left and space is clear");
+						return true; 
+					}
+				}
+			}else {
+				if (movingRight) {
+					if (gameBoard.getGameboard()[ymove-1][xmove+1] == 0) {
+						System.out.println("moving up and right and space is clear");
+						return true; 
+					}
+				}else {
+					if (gameBoard.getGameboard()[ymove-1][xmove-1] == 0) {
+						System.out.println("moving up and left and space is clear");
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+		if (movingRight) {
+			if (gameBoard.getGameboard()[ymove+1][xmove+1]==0) {
+				System.out.println("jump is acceptable");
+				return true; 
+			}else {
+				System.out.println("jump is not acceptable");
+				return false;
+			}
+		}else {
+			if (gameBoard.getGameboard()[ymove+1][xmove-1]==0) {
+				return true;
+			}
+		}
+		return false;
+	}
+	public void removePiece (int xPiece,int yPiece) {
+		System.out.println("removing peice");
+		Piece piece =model.findPiece(xPiece, yPiece);
+		if(piece.getType()==1 || (piece.getType()==3) ) {
+			model.blackPieces.remove(piece);
+			blackPieces -= 1;
+		}else {
+			model.whitePieces.remove(piece);
+			whitePieces -= 1;
+		}
+		gameBoard.getGameboard()[xPiece][yPiece] =0;
+	}
 	
 
 	public void moveChecker(int turn, boolean play) {
@@ -142,6 +197,8 @@ public class Game {
 			int yorigin = Integer.parseInt(origin.substring(1, 2));
 			int convertedXorigin = vaildate_x(xorigin);
 			yorigin -= 1;
+			
+			Piece type = validateChecker(convertedXorigin, yorigin);
 
 			System.out.println("where would you like to move it");
 			moveCord = sc.next();
@@ -161,9 +218,45 @@ public class Game {
 			ymove -= 1;
 			boolean movingRight = movingRight(convertedXorigin,yorigin,convertedXmove,ymove);
 			boolean movingDown = movingDown(convertedXorigin,yorigin,convertedXmove,ymove);
-			//Move move = null;
+			Move move = null;
 			
 			if(checkMove(convertedXorigin,yorigin,convertedXmove,ymove,movingRight,movingDown)) {
+				if (spaceOccupied (convertedXmove,ymove)) {
+					System.out.println("space is occupied");
+					if(oppenentsChecker(convertedXmove, ymove,turn,type)) {
+						if (jumpCheck(convertedXorigin,yorigin,convertedXmove,ymove,movingRight,movingDown)) {
+							if(movingRight) {
+								if(movingDown) {
+									move = new Move(convertedXorigin,yorigin,convertedXmove +1,ymove+1);
+									model.moves.addMove(move);
+									removePiece(convertedXmove,ymove);
+									
+								}else {
+									move = new Move(convertedXorigin,yorigin,convertedXmove -1,ymove+1);
+									model.moves.addMove(move);
+									removePiece(convertedXmove,ymove);
+								}
+							}else {
+								if(movingDown) {
+									move = new Move(convertedXorigin,yorigin,convertedXmove -1,ymove+1);
+									model.moves.addMove(move);
+									removePiece(convertedXmove,ymove);
+								}else {
+									move = new Move(convertedXorigin,yorigin,convertedXmove -1,ymove-1);
+									model.moves.addMove(move);
+									removePiece(convertedXmove,ymove);
+								}
+							}
+						}
+						
+					}
+					
+				}else {
+					System.out.println("space is not taken");
+					move = new Move(convertedXorigin,yorigin,convertedXmove -1,ymove-1);
+					model.moves.addMove(move);
+					
+				}
 				
 			}
 		
