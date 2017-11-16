@@ -60,7 +60,40 @@ int i = 1;
 		return null;
 		
 	}
+	
+	public void updatePiece(Move move, int turn, Piece piece) {
+		int i=0;
+		
+		if(turn ==1) {
+			for (Piece c: blackPieces) {
+				if ((piece.getxPosition()== c.getxPosition())&& (piece.getyPosition() ==c.getyPosition()) ) {
+					piece.setxPosition(move.getXmove());
+					piece.setxPosition(move.getYmove());
+					blackPieces.set(i,piece);
+				}
+				i++;
+			}
+			
+		}else if (turn ==2) {
+			for (Piece c: whitePieces) {
+				if ((piece.getxPosition()== c.getxPosition())&& (piece.getyPosition() ==c.getyPosition()) ) {
+					piece.setxPosition(move.getXmove());
+					piece.setxPosition(move.getYmove());
+					whitePieces.set(i,piece);
 	}
+				i++;
+			}
+	}else {
+		System.out.println("piece not found");
+	}
+	}
+	
+	
+	
+	
+	
+	}
+	
 	
 
 

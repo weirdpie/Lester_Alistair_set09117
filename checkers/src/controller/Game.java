@@ -3,6 +3,7 @@ package controller;
 
 import java.util.Scanner;
 
+
 import model.Model;
 import model.Move;
 import model.Piece;
@@ -91,12 +92,12 @@ public class Game {
 		Piece piece = model.findPiece(xcord,yvalue);
 		return piece;
 	}
-	public boolean oppenentsChecker(int xcord,int yvalue,int turn, Piece type) {
-		int attChecker = Piece.getType();
-		int piece =gameBoard.getGameboard()[yvalue][xcord];
+	public boolean oppenentsChecker(int xcord,int yvalue,int turn, Piece piece) {
+		int attChecker = piece.getType();
+		int checker =gameBoard.getGameboard()[yvalue][xcord];
 		
 		if ((attChecker ==1) || (attChecker ==3)) {
-			if((piece ==2) || (piece ==4)) {
+			if((checker ==2) || (checker ==4)) {
 				System.out.println("checker is an enemy");
 				return true;
 			}else {
@@ -104,7 +105,7 @@ public class Game {
 			}
 		
 		}else {
-			if((piece ==1) || (piece==3)) {
+			if((checker ==1) || (checker==3)) {
 				System.out.println("checker is an enemy");
 				return true;
 			}else {
@@ -172,7 +173,7 @@ public class Game {
 	}
 	
 
-	public void moveChecker(int turn, boolean play) {
+	public Move moveChecker(int turn, boolean play) {
 		String origin = "";
 		String moveCord = "";
 		boolean error = false;
@@ -198,7 +199,7 @@ public class Game {
 			int convertedXorigin = vaildate_x(xorigin);
 			yorigin -= 1;
 			
-			Piece type = validateChecker(convertedXorigin, yorigin);
+			Piece piece = validateChecker(convertedXorigin, yorigin);
 
 			System.out.println("where would you like to move it");
 			moveCord = sc.next();
@@ -223,27 +224,27 @@ public class Game {
 			if(checkMove(convertedXorigin,yorigin,convertedXmove,ymove,movingRight,movingDown)) {
 				if (spaceOccupied (convertedXmove,ymove)) {
 					System.out.println("space is occupied");
-					if(oppenentsChecker(convertedXmove, ymove,turn,type)) {
+					if(oppenentsChecker(convertedXmove, ymove,turn,piece)) {
 						if (jumpCheck(convertedXorigin,yorigin,convertedXmove,ymove,movingRight,movingDown)) {
 							if(movingRight) {
 								if(movingDown) {
 									move = new Move(convertedXorigin,yorigin,convertedXmove +1,ymove+1);
-									model.moves.addMove(move);
+									model.moves.add(move);
 									removePiece(convertedXmove,ymove);
 									
 								}else {
 									move = new Move(convertedXorigin,yorigin,convertedXmove -1,ymove+1);
-									model.moves.addMove(move);
+									model.moves.add(move);
 									removePiece(convertedXmove,ymove);
 								}
 							}else {
 								if(movingDown) {
 									move = new Move(convertedXorigin,yorigin,convertedXmove -1,ymove+1);
-									model.moves.addMove(move);
+									model.moves.add(move);
 									removePiece(convertedXmove,ymove);
 								}else {
 									move = new Move(convertedXorigin,yorigin,convertedXmove -1,ymove-1);
-									model.moves.addMove(move);
+									model.moves.add(move);
 									removePiece(convertedXmove,ymove);
 								}
 							}
@@ -254,17 +255,35 @@ public class Game {
 				}else {
 					System.out.println("space is not taken");
 					move = new Move(convertedXorigin,yorigin,convertedXmove -1,ymove-1);
-					model.moves.addMove(move);
-					
+					model.moves.add(move);
+					if (king(piece,move)) {
+						piece = ConvertToKing(piece,move);
+						model.updatePiece(move, turn, piece);
+						
+						showingBoard();
+						return move;
+					}
+					model.updatePiece(move, turn, piece);
+					showingBoard();
+					return move;
 				}
 				
+			}else {
+				System.out.println("error in move fucntion");
 			}
+			if (king(piece,move)) {
+				piece = ConvertToKing(piece,move);
+				model.updatePiece(move, turn, piece);
+				showingBoard();
+				return move;
+			}
+				
 		
 			
 
 		
 
-			Move move = new Move(yorigin, convertedXorigin, ymove, convertedXmove);
+		//	Move move = new Move(yorigin, convertedXorigin, ymove, convertedXmove);
 		
 			int type = gameBoard.getGameboard()[convertedXorigin][yorigin];
 		
@@ -280,7 +299,49 @@ public class Game {
 			turn = changeTurn(turn);
 
 		}
-
+return null;
+	}
+	public boolean king (Piece piece, Move move) {
+		if(piece.getType()==1) {
+			if(move.getYmove()==7) {
+				System.out.println("piece has become king");
+				return true;
+				
+			}else {
+				
+			}
+		}
+		if (piece.getType()==2) {
+			if(move.getYmove()==7) {
+				System.out.println("piece has become king");
+				return true;
+			}else {
+				
+			}
+		}
+		return false;
+	}
+	public Piece ConvertToKing(Piece piece, Move move) {
+		int type = 0; 
+		if(piece.getType()==1) {
+			piece.setType(3);
+			type =3;
+		}else if (piece.getType()==2) {
+			piece.setType(4);
+			type =4;
+		}
+		gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()]= 0;
+		gameBoard.getGameboard()[move.getYmove()][move.getXmove()]= type;
+		return piece;
+	}
+	public int blackWins() {
+		if (blackPieces ==0) {
+			return 1;
+			
+		}else if(whitePieces==0) {
+			return 2;
+		}
+		return 0;
 	}
 
 	public boolean checkMove(int xorigin, int yorigin, int xmove, int ymove, boolean movingRight, boolean movingDown) {
