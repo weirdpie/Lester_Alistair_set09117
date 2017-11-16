@@ -5,7 +5,7 @@ public ArrayList<Move> moves = new ArrayList<Move>();
 ArrayList<Move> temp = new ArrayList<Move>();
 public ArrayList<Piece> blackPieces = new ArrayList<Piece>();
 public ArrayList<Piece> whitePieces = new ArrayList<Piece>();
-int i = 1;
+
 	public void populate() {
 		
 		blackPieces.add(new Piece(1,1,0));
@@ -62,7 +62,7 @@ int i = 1;
 		
 	}
 	
-	public void updatePiece(Move move, int turn, Piece piece) {
+	public void updatePiece(Move move, Piece piece, int turn) {
 		int i=0;
 		
 		if(turn ==1) {

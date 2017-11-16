@@ -51,7 +51,7 @@ public class Game {
 
 	}
 	public boolean movingRight(int xorigin,int yorigin, int xmove,int ymove) {
-		if (xmove ==(xorigin+1)) {
+		if (xmove ==(xorigin +1)) {
 			System.out.println("moving right is true");
 			return true;
 			
@@ -257,12 +257,12 @@ public class Game {
 					model.moves.add(move);
 					if (king(piece,move)) {
 						piece = ConvertToKing(piece,move);
-						model.updatePiece(move, turn, piece);
+						model.updatePiece(move, piece, turn);
 						
 						showingBoard();
 						return move;
 					}
-					model.updatePiece(move, turn, piece);
+					model.updatePiece(move, piece, turn);
 					updateBoard(move);
 					showingBoard();
 					return move;
@@ -273,7 +273,7 @@ public class Game {
 			}
 			if (king(piece,move)) {
 				piece = ConvertToKing(piece,move);
-				model.updatePiece(move, turn, piece);
+				model.updatePiece(move, piece,turn);
 				updateBoard(move);
 				showingBoard();
 				return move;
@@ -286,14 +286,14 @@ public class Game {
 
 		//	Move move = new Move(yorigin, convertedXorigin, ymove, convertedXmove);
 		
-			int type = gameBoard.getGameboard()[convertedXorigin][yorigin];
-		
-			model.addMove(convertedXorigin, yorigin, convertedXmove, ymove);
-			System.out.print(move + "\n");
-
-		
-			gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()] = 0;
-			gameBoard.getGameboard()[move.getYmove()][move.getXmove()] = type;
+//			int type = gameBoard.getGameboard()[convertedXorigin][yorigin];
+//		
+//			model.addMove(convertedXorigin, yorigin, convertedXmove, ymove);
+//			System.out.print(move + "\n");
+//
+//		
+//			gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()] = 0;
+//			gameBoard.getGameboard()[move.getYmove()][move.getXmove()] = type;
 
 			vaildate_x(xorigin);
 			showingBoard();
@@ -555,14 +555,14 @@ return null;
 	}
 
 	public static void main(String[] args) {
-		// Scanner sc = new Scanner(System.in);
+		
 		Game controller = new Game();
 		controller.populate();
 		controller.showingBoard();
 		int turn = 1;
 		boolean play = true;
 		do {
-			controller.moveChecker(turn, play);
+controller.moveChecker(turn, play);
 		} while (play == true);
 
 		while (play == false)
