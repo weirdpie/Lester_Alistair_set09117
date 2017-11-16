@@ -413,8 +413,8 @@ return null;
 				} else {
 					System.out.println("wrong way");
 					return false;
-
-				}}
+				}
+			}
 		
 		case 3:
 			if (movingDown) {
