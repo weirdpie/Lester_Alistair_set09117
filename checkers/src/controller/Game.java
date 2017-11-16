@@ -89,32 +89,32 @@ public class Game {
 		Piece piece = model.findPiece(xcord,yvalue);
 		return piece;
 	}
-	public boolean oppenentsChecker(int xcord,int yvalue,int turn, Piece type) {
-		int attChecker = Piece.getType();
-		int piece =gameBoard.getGameboard()[yvalue][xcord];
-		
-		if ((attChecker ==1) || (attChecker ==3)) {
-			if((piece ==2) || (piece ==4)) {
-				System.out.println("checker is an enemy");
-				return true;
-			}else {
-				System.out.println("checker is not an enemy");
-			}
-		
-		}else {
-			if((piece ==1) || (piece==3)) {
-				System.out.println("checker is an enemy");
-				return true;
-			}else {
-				System.out.println("checker is not an enemy");
-			
-			}
-		}
-		
-		
-		return false;
-	}
-	
+//	public boolean oppenentsChecker(int xcord,int yvalue,int turn, Piece type) {
+//		//int attChecker = Piece.getType();
+//		int piece =gameBoard.getGameboard()[yvalue][xcord];
+//		
+//		if ((attChecker ==1) || (attChecker ==3)) {
+//			if((piece ==2) || (piece ==4)) {
+//				System.out.println("checker is an enemy");
+//				return true;
+//			}else {
+//				System.out.println("checker is not an enemy");
+//			}
+//		
+//		}else {
+//			if((piece ==1) || (piece==3)) {
+//				System.out.println("checker is an enemy");
+//				return true;
+//			}else {
+//				System.out.println("checker is not an enemy");
+//			
+//			}
+//		}
+//		
+//		
+//		return false;
+//	}
+//	
 	
 
 	public void moveChecker(int turn, boolean play) {
@@ -161,7 +161,7 @@ public class Game {
 			ymove -= 1;
 			boolean movingRight = movingRight(convertedXorigin,yorigin,convertedXmove,ymove);
 			boolean movingDown = movingDown(convertedXorigin,yorigin,convertedXmove,ymove);
-			Move move = null;
+			//Move move = null;
 			
 			if(checkMove(convertedXorigin,yorigin,convertedXmove,ymove,movingRight,movingDown)) {
 				

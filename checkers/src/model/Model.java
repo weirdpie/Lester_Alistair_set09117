@@ -46,14 +46,14 @@ int i = 1;
 	}
 	public Piece findPiece(int xcord,int yvalue) {
 		for(Piece peice : blackPieces) {
-			if((xcord == Piece.getxPosition()) && (yvalue == Piece.getyPosition())) {
+			if((xcord == peice.getxPosition()) && (yvalue == peice.getyPosition())) {
 				return peice;
 			}
 		}
 		
-		for(Piece checker : whitePieces) {
-			if((xcord == checker.getxPosition()) && (yvalue == checker.getyPosition())) {
-				return checker;
+		for(Piece piece : whitePieces) {
+			if((xcord == piece.getxPosition()) && (yvalue == piece.getyPosition())) {
+				return  piece;
 			}
 		}
 		
