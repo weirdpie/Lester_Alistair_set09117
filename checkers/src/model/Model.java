@@ -8,31 +8,32 @@ public ArrayList<Piece> whitePieces = new ArrayList<Piece>();
 int i = 1;
 	public void populate() {
 		
-		blackPieces.add(new Piece(1,0,0));
-		blackPieces.add(new Piece(1,2,0));
-		blackPieces.add(new Piece(1,4,0));
-		blackPieces.add(new Piece(1,6,0));
-		blackPieces.add(new Piece(1,1,1));
-		blackPieces.add(new Piece(1,3,1));
-		blackPieces.add(new Piece(1,5,1));
-		blackPieces.add(new Piece(1,7,1));
-		blackPieces.add(new Piece(1,0,2));
+		blackPieces.add(new Piece(1,1,0));
+		blackPieces.add(new Piece(1,3,0));
+		blackPieces.add(new Piece(1,5,0));
+		blackPieces.add(new Piece(1,7,0));
+		blackPieces.add(new Piece(1,0,1));
+		blackPieces.add(new Piece(1,2,1));
+		blackPieces.add(new Piece(1,4,1));
+		blackPieces.add(new Piece(1,6,1));
+		blackPieces.add(new Piece(1,1,2));
 		blackPieces.add(new Piece(1,3,2));
 		blackPieces.add(new Piece(1,5,2));
 		blackPieces.add(new Piece(1,7,2));
 		
-		whitePieces.add(new Piece(2,1,5));
-		whitePieces.add(new Piece(2,3,5));
-		whitePieces.add(new Piece(2,5,5));
-		whitePieces.add(new Piece(2,7,5));
-		whitePieces.add(new Piece(2,0,6));
-		whitePieces.add(new Piece(2,2,6));
-		whitePieces.add(new Piece(2,4,6));
-		whitePieces.add(new Piece(2,6,6));
-		whitePieces.add(new Piece(2,1,7));
-		whitePieces.add(new Piece(2,3,7));
-		whitePieces.add(new Piece(2,5,7));
-		whitePieces.add(new Piece(2,7,7));
+
+		whitePieces.add(new Piece(2,0,5));
+		whitePieces.add(new Piece(2,2,5));
+		whitePieces.add(new Piece(2,4,5));
+		whitePieces.add(new Piece(2,6,5));
+		whitePieces.add(new Piece(2,1,6));
+		whitePieces.add(new Piece(2,3,6));
+		whitePieces.add(new Piece(2,5,6));
+		whitePieces.add(new Piece(2,7,6));
+		whitePieces.add(new Piece(2,0,7));
+		whitePieces.add(new Piece(2,2,7));
+		whitePieces.add(new Piece(2,4,7));
+		whitePieces.add(new Piece(2,6,7));
 
 	}
 	

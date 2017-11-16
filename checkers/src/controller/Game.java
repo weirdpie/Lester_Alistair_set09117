@@ -13,12 +13,11 @@ import java.util.*;
 
 public class Game {
 
-	// move checker
-	// taking a peice
+	
 	// undo re do
-	// do jump
-	// jump validation = move vaildation
-	// kings
+	
+	// fix kings ?
+	//ai ? 
 
 	Model model = new Model();
 
@@ -264,6 +263,7 @@ public class Game {
 						return move;
 					}
 					model.updatePiece(move, turn, piece);
+					updateBoard(move);
 					showingBoard();
 					return move;
 				}
@@ -274,6 +274,7 @@ public class Game {
 			if (king(piece,move)) {
 				piece = ConvertToKing(piece,move);
 				model.updatePiece(move, turn, piece);
+				updateBoard(move);
 				showingBoard();
 				return move;
 			}
@@ -300,6 +301,15 @@ public class Game {
 
 		}
 return null;
+	}
+	
+	public void updateBoard(Move move) {
+		
+		int type = gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()];
+		
+			gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()] = 0;
+			gameBoard.getGameboard()[move.getYmove()][move.getXmove()] = type;
+		
 	}
 	public boolean king (Piece piece, Move move) {
 		if(piece.getType()==1) {
@@ -465,27 +475,6 @@ return null;
 			}
 		}
 		return false;
-	}
-
-	
-
-		
-	
-	public void checkTake() {
-		// If red take , black piece +1 +1 empty , black piece +1 -1 empty then take and
-		// delete
-		// If black take , red piece -1 -1 empty , red piece -1 +1 empty then take and
-		// delete
-		// else invalid move
-		// restart players turn and ask them to move again
-	}
-
-	public void king() {
-		// if piece reached 0 or 8 , change peice type to king ( colour ) and end turn
-	}
-
-	public void checkKing() {
-		// king type can move any way
 	}
 
 	public void undo() {
