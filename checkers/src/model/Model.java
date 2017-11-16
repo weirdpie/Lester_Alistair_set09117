@@ -44,7 +44,23 @@ int i = 1;
 		System.out.println("move added");
 		return move;
 	}
-	
+	public Piece findPiece(int xcord,int yvalue) {
+		for(Piece peice : blackPieces) {
+			if((xcord == Piece.getxPosition()) && (yvalue == Piece.getyPosition())) {
+				return peice;
+			}
+		}
+		
+		for(Piece checker : whitePieces) {
+			if((xcord == checker.getxPosition()) && (yvalue == checker.getyPosition())) {
+				return checker;
+			}
+		}
+		
+		return null;
+		
+	}
+	}
 	
 
-}
+

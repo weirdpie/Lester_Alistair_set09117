@@ -50,7 +50,7 @@ public class Piece {
 
 	@Override
 	public String toString() {
-		return "Piece [type=" + type + ", xPosition=" + xPosition + ", yPosition=" + yPosition + "]";
+		return  "Piece [type=" + type + ", xPosition=" + xPosition + ", yPosition=" + yPosition + "]";
 	}
 
 

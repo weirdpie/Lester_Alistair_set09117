@@ -48,6 +48,74 @@ public class Game {
 		System.out.println("\t");
 
 	}
+	public boolean movingRight(int xorigin,int yorigin, int xmove,int ymove) {
+		if (xmove ==(xorigin+1)) {
+			System.out.println("moving right is true");
+			return true;
+			
+		}else {
+			System.out.println("moving right is false");
+			return false;
+			
+		}
+	}
+	public boolean movingDown(int xorigin,int yorigin, int xmove,int ymove) {
+		if (ymove ==(yorigin+1)) {
+			System.out.println("moving down is true");
+			return true;
+			
+		}else {
+			System.out.println("moving down is false");
+			return false;
+			
+		}
+	
+}
+	public boolean spaceOccupied(int xcord,int yvalue) {
+		
+		if ((gameBoard.getGameboard()[yvalue][xcord]==1) || (gameBoard.getGameboard()[yvalue][xcord]==3)){
+		System.out.println("checker is black");
+		return true;
+		}else if ((gameBoard.getGameboard()[yvalue][xcord]==2) || (gameBoard.getGameboard()[yvalue][xcord]==4)) {
+			System.out.println("checker is white");
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	
+	public Piece validateChecker(int xcord, int yvalue) {
+		Piece piece = model.findPiece(xcord,yvalue);
+		return piece;
+	}
+	public boolean oppenentsChecker(int xcord,int yvalue,int turn, Piece type) {
+		int attChecker = Piece.getType();
+		int piece =gameBoard.getGameboard()[yvalue][xcord];
+		
+		if ((attChecker ==1) || (attChecker ==3)) {
+			if((piece ==2) || (piece ==4)) {
+				System.out.println("checker is an enemy");
+				return true;
+			}else {
+				System.out.println("checker is not an enemy");
+			}
+		
+		}else {
+			if((piece ==1) || (piece==3)) {
+				System.out.println("checker is an enemy");
+				return true;
+			}else {
+				System.out.println("checker is not an enemy");
+			
+			}
+		}
+		
+		
+		return false;
+	}
+	
+	
 
 	public void moveChecker(int turn, boolean play) {
 		String origin = "";
@@ -55,19 +123,20 @@ public class Game {
 		boolean error = false;
 		Scanner sc = new Scanner(System.in);
 		while (play == true) {
-			
+
 			System.out.println("what peice do you want to move  ");
 			origin = sc.next();
 
 			System.out.print(origin);
-			
+
 			if (validateUserInput(origin)) {
 				System.out.println("Please enter a letter and a number form a-h and 1-7 (a3)");
 				error = true;
 			} else {
 				error = false;
 			}
-			while (error);
+			while (error)
+				;
 
 			String xorigin = origin.substring(0, 1);
 			int yorigin = Integer.parseInt(origin.substring(1, 2));
@@ -83,23 +152,33 @@ public class Game {
 			} else {
 				error = false;
 			}
-			while (error);
+			while (error)
+				;
 
 			String xmove = moveCord.substring(0, 1);
 			int ymove = Integer.parseInt(moveCord.substring(1, 2));
 			int convertedXmove = vaildate_x(xmove);
 			ymove -= 1;
+			boolean movingRight = movingRight(convertedXorigin,yorigin,convertedXmove,ymove);
+			boolean movingDown = movingDown(convertedXorigin,yorigin,convertedXmove,ymove);
+			Move move = null;
+			
+			if(checkMove(convertedXorigin,yorigin,convertedXmove,ymove,movingRight,movingDown)) {
+				
+			}
+		
+			
 
-			// System.out.print(yorigin,convertedXorigin,ymove,convertedXmove,xorigin,xmove);
+		
 
 			Move move = new Move(yorigin, convertedXorigin, ymove, convertedXmove);
-			//
+		
 			int type = gameBoard.getGameboard()[convertedXorigin][yorigin];
-			//
+		
 			model.addMove(convertedXorigin, yorigin, convertedXmove, ymove);
 			System.out.print(move + "\n");
 
-			// model.moves.add(convertedXorigin, yorigin, convertedXmove, ymove);
+		
 			gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()] = 0;
 			gameBoard.getGameboard()[move.getYmove()][move.getXmove()] = type;
 
@@ -109,24 +188,135 @@ public class Game {
 
 		}
 
-		// if 1 trys to move into 2 get new user input
-		// call move moveChecker to make sure user is inputing the right data
-		// if type any peice = 0 end game and declare the other user the winner.
 	}
 
-	public static Boolean checkInput(String sc) {
-		// call move moveChecker to make sure user is inputing the right data
-		return null;
+	public boolean checkMove(int xorigin, int yorigin, int xmove, int ymove, boolean movingRight, boolean movingDown) {
 
+		int type = gameBoard.getGameboard()[yorigin][xorigin];
+
+		switch (type) {
+		case 1:
+			if (movingDown) {
+				if (xmove == (xorigin + 1)) {
+					movingRight = true;
+					if (ymove == (yorigin + 1)) {
+						return true;
+					} else {
+						System.out.println("ymove is not acceptable");
+						return false;
+					}
+				} else if (xmove == (xorigin - 1)) {
+					movingRight = false;
+					if (ymove == (yorigin + 1)) {
+						System.out.println("ymove is valid");
+						return false;
+
+					} else {
+						System.out.println("xmove is not acceptable");
+
+					}
+				} else {
+					System.out.println("wrong way");
+				}
+
+			}
+		case 2:
+			if (movingDown) {
+				if (xmove == (xorigin + 1)) {
+					movingRight = true;
+					if (ymove == (yorigin - 1)) {
+						System.out.println("ymove is acceptable");
+						return true;
+
+					} else {
+						System.out.println("ymove is not acceptable");
+						return false;
+					}
+				} else if (xmove == (xorigin - 1)) {
+					System.out.println("xmove is acceptable");
+					movingRight = false;
+					if (ymove == (yorigin - 1)) {
+						System.out.println("ymove is acceptable");
+						return true;
+					} else {
+						System.out.println("xmove is not acceptable");
+					}
+
+				} else {
+					System.out.println("wrong way");
+					return false;
+				}
+			}
+		case 3:
+			if (movingDown) {
+				if (xmove == (xorigin + 1)) {
+					System.out.println("xmove is acceptable");
+					movingRight = true;
+					if (ymove == (yorigin + 1)) {
+						System.out.println("ymove is acceptable");
+						return true;
+					} else {
+						System.out.println("ymove is not acceptable");
+						return false;
+					}
+
+				} else if (xmove == (xorigin - 1))
+					;
+				{
+					System.out.println("xmove is acceptable");
+					movingRight = false;
+					if (ymove == (yorigin + 1)) {
+						System.out.println("ymove is acceptable");
+						return true;
+					} else {
+						System.out.println("ymove is not acceptable");
+						return false;
+
+					}
+				}
+			}
+
+			else {
+				System.out.println("xmove is not acceptable ");
+			}
+
+		}
+		if (!movingDown) {
+			if (xmove == (xorigin + 1)) {
+				System.out.println("xmove is acceptable");
+				movingRight = true;
+				if (ymove == (yorigin - 1)) {
+					System.out.println("ymove is acceptable");
+					return true;
+
+				} else {
+					System.out.println("ymove is not acceptable");
+					return false;
+				}
+
+			} else if (xmove == (xorigin - 1)) {
+
+				System.out.println("xmove is acceptable");
+				movingRight = false;
+				if (ymove == (yorigin - 1)) {
+					System.out.println("ymove is acceptable");
+					return true;
+				} else {
+					System.out.println("ymove is not acceptable");
+					return false;
+				}
+
+			} else {
+				System.out.println("xmove is not acceptable ");
+			}
+		}
+		return false;
 	}
 
-	public void checkMove() {
-		// If red piece can only move +1 +1 , +1 -1 , -1 +1 , -1 -1 i
-		// If black piece can only move -1 -1 , -1 +1 , +1 -1 , +1 +1
-		// else invalid move
-		// restart players turn and ask them to move again
-	}
+	
 
+		
+	
 	public void checkTake() {
 		// If red take , black piece +1 +1 empty , black piece +1 -1 empty then take and
 		// delete
