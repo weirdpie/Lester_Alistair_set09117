@@ -294,9 +294,9 @@ public class Game {
 //		
 //			gameBoard.getGameboard()[move.getYorigin()][move.getXorigin()] = 0;
 //			gameBoard.getGameboard()[move.getYmove()][move.getXmove()] = type;
-
-			vaildate_x(xorigin);
-			showingBoard();
+//
+//			vaildate_x(xorigin);
+//			showingBoard();
 			turn = changeTurn(turn);
 
 		}
@@ -373,19 +373,21 @@ return null;
 					movingRight = false;
 					if (ymove == (yorigin + 1)) {
 						System.out.println("ymove is valid");
-						return false;
+						return true;
 
 					} else {
-						System.out.println("xmove is not acceptable");
+						System.out.println("ymove is not acceptable");
+						return false;
 
 					}
 				} else {
 					System.out.println("wrong way");
+					return false;
 				}
 
 			}
 		case 2:
-			if (movingDown) {
+			if (!movingDown) {
 				if (xmove == (xorigin + 1)) {
 					movingRight = true;
 					if (ymove == (yorigin - 1)) {
@@ -403,7 +405,8 @@ return null;
 						System.out.println("ymove is acceptable");
 						return true;
 					} else {
-						System.out.println("xmove is not acceptable");
+						System.out.println("ymove is not acceptable");
+						return false;
 					}
 
 				} else {
