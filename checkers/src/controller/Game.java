@@ -14,10 +14,6 @@ import java.util.*;
 public class Game {
 
 	
-	// undo re do
-	
-	// fix kings ?
-	//ai ? 
 
 	Model model = new Model();
 
@@ -140,9 +136,10 @@ public class Game {
 						return true;
 					}
 				}
+				return false;
 			}
-			return false;
-		}
+		
+		
 		if (movingRight) {
 			if (gameBoard.getGameboard()[ymove+1][xmove+1]==0) {
 				System.out.println("jump is acceptable");
@@ -154,8 +151,12 @@ public class Game {
 		}else {
 			if (gameBoard.getGameboard()[ymove+1][xmove-1]==0) {
 				return true;
+			}else {
+				
 			}
 		}
+		
+	}
 		return false;
 	}
 	public void removePiece (int xPiece,int yPiece) {
@@ -322,7 +323,7 @@ return null;
 			}
 		}
 		if (piece.getType()==2) {
-			if(move.getYmove()==7) {
+			if(move.getYmove()==0) {
 				System.out.println("piece has become king");
 				return true;
 			}else {
@@ -412,8 +413,9 @@ return null;
 				} else {
 					System.out.println("wrong way");
 					return false;
-				}
-			}
+
+				}}
+		
 		case 3:
 			if (movingDown) {
 				if (xmove == (xorigin + 1)) {
@@ -544,7 +546,7 @@ return null;
 	public static Boolean validateUserInput(String input) {
 		String xInput = input.substring(0, 1);
 
-		int yInput = Integer.parseInt(input.substring(1, 2));
+	
 
 		boolean xletter = Character.isLetter(xInput.charAt(0));
 
